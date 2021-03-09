@@ -11,5 +11,3 @@ Page uses `search bar` which filter data, if no input is provided full list will
 Page also have Have button for sorting the data in Ascending Desceding order.
 
 The Table is Provided with `View User Button` to each row which will show the Details of user.
-
-You can watch the projct on [ ]();
