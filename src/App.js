@@ -113,7 +113,7 @@ const descending =  () => {
               <th>Action</th>
             </tr>
           {  fildata.map( (m) => {
-            const { id, userId, title, completed } = m
+            const { id, title, completed } = m
             {console.log('i ran')}
             return (
                   <tr key={id}>
