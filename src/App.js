@@ -46,10 +46,8 @@ function App() {
       }
       else if( String(person.completed) === e.target.value ){
         return String(person.completed) === e.target.value
-      }
-      return;
-    }
-    )
+      };
+    });
     
     if( Fdata.length > 0 ){
       setFilData(Fdata);
