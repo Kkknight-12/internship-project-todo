@@ -56,7 +56,7 @@ function App() {
       setFilData(data);
 
     }
-    console.log(fildata);
+    return;
 }
 
 const close = () => {
