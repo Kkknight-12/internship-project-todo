@@ -1,6 +1,6 @@
 # Todos
 
-This project build with `React.js` `Javascript` `Css`
+This project build with `React.js` `Javascript` `Css`.
 
 ### `About`
 

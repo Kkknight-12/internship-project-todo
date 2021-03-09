@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const url = 'https://jsonplaceholder.typicode.com/todos';
@@ -12,17 +11,7 @@ function App() {
 
   useEffect( () => {
     const f = async () => {
-      // const response = await axios.get('url')
-      // return setData(response.data);
-      // // console.log(response.data)
-  
-      // await axios.get('https://jsonplaceholder.typicode.com/todos')
-      // axios.get('https://jsonplaceholder.typicode.com/todos')
-      // .then( response => {
-      //   // return console.log(response.data)
-      //   return setData(response.data);
-      // })
-  
+
       const response = await fetch( url );
       let data = await response.json();
 
@@ -33,45 +22,19 @@ function App() {
   },[])
 
   const fetchUser = async(id) => {
+    const response = await fetch (`https://jsonplaceholder.typicode.com/users/${id}`);
+    let userData = await response.json();
+    const { name, email } = userData;
 
-    // const fetchUserDetail = async(id) => {
-      const response = await fetch (`https://jsonplaceholder.typicode.com/users/${id}`);
-      let userData = await response.json();
-      const { name, email } = userData;
-      // console.log(userData)
+    const user = data.filter( ( a ) => a.id === id );
+    const { userId, title } = user[0];
 
-      const user = data.filter( ( a ) => a.id === id );
-      // console.log(user[0])
-      const { userId, title } = user[0];
-      // console.log( userId, title )
-      // console.log(user);
-      // <Detail ud = {name, email, userId, title }/>
-    // }
-    // fetchUserDetail();
     console.log(name, email, userId, title)
     setUserData( { ...uData, name, email, userId, title})
     setModal(true);
   }
-  
-  // useEffect( ()=>{
-  //   console.log(uData);
-  //   // console.log( typeof data)
-  // },[uData])
 
   const t = (e) => {
-    // console.log(e.target.value)
-    // const name =  fildata.filter( (person)=> {
-    //   return person.title === e.target.value;
-    // })
-    // const usrID =  data.filter( (person)=> {
-    //   return person.userId === e.target.value;
-    // })
-    // const Id =  data.filter( (person)=> {
-    //   return person.id === parseInt(e.target.value);
-    // })
-    // const Completed =  data.filter( (person)=> {
-    //   return person.completed === e.target.value;
-    // })
 
     const Fdata  = data.filter( (person) => {
 
@@ -149,7 +112,6 @@ const descending =  () => {
               <th>Status</th>
               <th>Action</th>
             </tr>
-          {/* { data.length > 0 &&  <List {...data} />  */}
           {  fildata.map( (m) => {
             const { id, userId, title, completed } = m
             {console.log('i ran')}
