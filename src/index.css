@@ -75,9 +75,10 @@ select {
   position: fixed;
   /* bottom: 3em; */
   max-width: 600px;
+  min-width: 350px;
   top: 12em;
-  left: 20%;
-  right: 20%;
+  left: 25%;
+  right: 30%;
   padding: 4em 3em;
   background-color: white;
   border-radius: 4px;
