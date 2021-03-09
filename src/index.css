@@ -129,6 +129,7 @@ button:hover {
   background: transparent;
   border: none;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .amount-btn svg {
