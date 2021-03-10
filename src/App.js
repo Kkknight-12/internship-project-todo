@@ -21,18 +21,43 @@ function App() {
     f();
   },[])
 
-  const fetchUser = async(id) => {
-    const response = await fetch (`https://jsonplaceholder.typicode.com/users/${id}`);
+  const fetchUser = async(userId) => {
+    const response = await fetch (`https://jsonplaceholder.typicode.com/users/${userId}`);
     let userData = await response.json();
-    const { name, email } = userData;
+    // const { name, email } = userData;
 
-    const user = data.filter( ( a ) => a.id === id );
-    const { userId, title } = user[0];
+    // const user = data.filter( ( a ) => a.id === id );
+    // const { userId, title } = user[0];
 
-    console.log(name, email, userId, title)
-    setUserData( { ...uData, name, email, userId, title})
+    // console.log(userData);
+    // console.log(data)
+    // const fUserData = userData.filter( (a)=> a.id === id )
+    // console.log(fUserData);
+
+    const userid = data.filter( (a)=> a.userId === userId )
+    // console.log(userid);
+    setUserData(userid)
+    console.log(data);
+    
+    // userid.map( (a) => {
+    //   const { title, userId } = a;
+    //   setUserData( {title, userId} )
+    // });
+
+    // fUserData.map( (a) => {
+    //   const { title, userId } = a;
+    //   setUserData( {...uData, title, userId} )
+    // });
+
+    // console.log(name, email, userId, title)
+    // setUserData( { ...uData, name, email, userId, title})
+    // console.log(uData);
     setModal(true);
   }
+
+  useEffect( ()=> {
+    console.log(uData)
+  },[uData])
 
   const t = (e) => {
 
@@ -112,7 +137,7 @@ const descending =  () => {
               <th>Action</th>
             </tr>
           {  fildata.map( (m) => {
-            const { id, title, completed } = m
+            const { id, title, completed, userId } = m
             {console.log('i ran')}
             return (
                   <tr key={id}>
@@ -120,7 +145,7 @@ const descending =  () => {
                     <th>{title}</th>
                     <th>{ completed ? 'true': 'false' }</th>
                     <th><button
-                          onClick={ ()=> fetchUser(id) }
+                          onClick={ ()=> fetchUser(userId) }
                             >ViewUser
                         </button>
                     </th>
@@ -142,18 +167,23 @@ const descending =  () => {
                           >close
                           </button>
                           <ul>
-                            <li>
-                            Name : { uData.name }
-                            </li>
-                            <li>
-                            Email: { uData.email }
-                            </li>
-                            <li>
-                            UserID: { uData.userId }
-                            </li>
-                            <li>
-                            Title: { uData.title }
-                            </li>
+                            {uData.length> 0 && uData.map( (m) => {
+                              const{ title, userId, id } = m
+                              console.log(m)
+                              return ( 
+                                <> 
+                                  <li>
+                                  UserID: { userId }
+                                  </li>
+                                  <li>
+                                  ID: { id }
+                                  </li>
+                                  <li>
+                                  Title: { title }
+                                  </li>
+                                </>
+                            )
+                            } )}
                           </ul>
                         </div>
                       </div>
